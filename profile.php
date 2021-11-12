@@ -10,14 +10,14 @@
 
 
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-	<title>Index</title>
+	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<title>Profile</title>
 </head>
 
 <body>
 	<div class="wrapper">
-		<!--HEADER-->
-		<header class="header">
+			<!--HEADER-->
+			<header class="header">
 			<div class="header__content">
 				<div class="header__body">
 					<h3 class="header__title">
@@ -34,13 +34,13 @@
 								<a href="index.html" class="header__link">Main</a>
 							</li>
 							<li>
-								<a href="electric_guitars.php" class="header__link">Electric guitars</a>
+								<a href="" class="header__link">Electric guitars</a>
 							</li>
 							<li>
-								<a href="bass_guitars.php" class="header__link">Bass guitars</a>
+								<a href="" class="header__link">Bass guitars</a>
 							</li>
 							<li>
-								<a href="accesories.php" class="header__link">Accesories</a>
+								<a href="" class="header__link">Accesories</a>
 							</li>
 							<li>
 								<a href="register.html">
@@ -59,30 +59,50 @@
 		</header>
 		<!--HEADER-->
 
-
-		<main class="main">
-			<div class="w-100">
-				<div class="hero">
-					<div class="hero__image">
-						<img src="images/main.png" alt="main image">
+		<!--MAIN-->
+		<?php
+			if($_COOKIE['user'] != '') {
+				$username = $_COOKIE['user'];
+				$mysql = new mysqli('localhost','root','','guitarshopdb');
+				$command = "SELECT * FROM users WHERE Username = '$username'";
+				$user = $mysql->query($command);
+				$row = $user->fetch_assoc();
+				if($row != null) {
+					$name = $row['Name'];
+					$surname = $row['Surname'];
+					$username = $row['Username'];
+					$balance = $row['Balance'];
+				}
+				$mysql->close();
+			}
+			
+		?>
+		<div class="main">
+			<div class="profile-info">
+				<div class="profile-info__col-1">
+					<div class="profile-info__data">
+						<h3>Name: </h3>
+						<p><?php echo $name;?></p>
 					</div>
-					<div class="hero__content">
-						<h1 class="hero__title">Guitar shop</h1>
-						<h3 class="hero__subtitle">Turn it up!</h3>
-						<p class="hero__text">we have the largest collection of guitars and accessories at the lowest prices
-						</p>
+					<div class="profile-info__data">
+						<h3>Surname: </h3>
+						<p><?php echo $surname;?></p>
 					</div>
+					<div class="profile-info__data">
+						<h3>Username: </h3>
+						<h3><?php echo $username;?></h3>
+					</div>
+					<div class="profile-info__data">
+						<h3>Balance: </h3>
+						<h3><?php echo $balance;?></h3>
+					</div>
+					<a href="top_up_balance.html"><div class="btn btn_balance">Top up balance</div></a>
 				</div>
-			</div>
 
-			<div class="w-100">
-				<div class="fluid-block">
-					<div class="products">
-						<h3 class="products__title block-title">
-							Best Products
-						</h3>
-
-						<div class="products-content">
+				<div class="profile-info__col-2">
+					<div class="products-list">
+						<h3>Products, you want to buy</h3>
+					<div class="products-content">
 							<div class="product">
 								<div class="product__image">
 									<img src="images/guitar.jpg" alt="">
@@ -93,7 +113,7 @@
 									necessitatibus incidunt esse laborum nemo explicabo, quod enim iure quidem alias inventore.
 									Sed, nihil?</p>
 								<p class="product__price">300 $</p>
-								<div class="product__about btn">About</div>
+								<div class="product__about btn">Buy</div>
 							</div>
 
 							<div class="product">
@@ -106,7 +126,7 @@
 									necessitatibus incidunt esse laborum nemo explicabo, quod enim iure quidem alias inventore.
 									Sed, nihil?</p>
 								<p class="product__price">300 $</p>
-								<div class="product__about btn">About</div>
+								<div class="product__about btn">Buy</div>
 							</div>
 
 							<div class="product">
@@ -119,20 +139,19 @@
 									necessitatibus incidunt esse laborum nemo explicabo, quod enim iure quidem alias inventore.
 									Sed, nihil?</p>
 								<p class="product__price">300 $</p>
-								<div class="product__about btn">About</div>
+								<div class="product__about btn">Buy</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</main>
+		</div>
+		<!--MAIN-->
 
 		<footer class="footer">
 
 		</footer>
 	</div>
-
-	<script src="scripts/burger.js"></script>
 </body>
 
 </html>
