@@ -411,8 +411,24 @@ label {
 			margin-left: 10px;
 		}
 	}
+	@media (max-width: 840px) {
+		& {
+			padding: 50px 50px;
+		}
+		flex-direction: column;
+		&__col-1 {
+			width: 100%;
+		}
+		&__col-2 {
+			width: 100%;
+		}
+	}
 }
-
+.products-content {
+	display: flex;
+	flex-direction: left;
+	flex-wrap: wrap;
+}
 .products-list h3 {
 	font-size: 40px;
 	text-align: center;

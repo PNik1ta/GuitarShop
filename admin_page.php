@@ -16,8 +16,8 @@
 
 <body>
 	<div class="wrapper">
-			<!--HEADER-->
-			<header class="header">
+					<!--HEADER-->
+		<header class="header">
 			<div class="header__content">
 				<div class="header__body">
 					<h3 class="header__title">
@@ -34,13 +34,13 @@
 								<a href="index.html" class="header__link">Main</a>
 							</li>
 							<li>
-								<a href="" class="header__link">Electric guitars</a>
+								<a href="electric_guitars.php" class="header__link">Electric guitars</a>
 							</li>
 							<li>
-								<a href="" class="header__link">Bass guitars</a>
+								<a href="bass_guitars.php" class="header__link">Bass guitars</a>
 							</li>
 							<li>
-								<a href="" class="header__link">Accesories</a>
+								<a href="accesories.php" class="header__link">Accesories</a>
 							</li>
 							<li>
 								<a href="register.html">

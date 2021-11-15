@@ -566,6 +566,36 @@ label {
   margin-left: 10px;
 }
 
+@media (max-width: 840px) {
+  .profile-info {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .profile-info {
+    padding: 50px 50px;
+  }
+  .profile-info__col-1 {
+    width: 100%;
+  }
+  .profile-info__col-2 {
+    width: 100%;
+  }
+}
+
+.products-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: left;
+          flex-direction: left;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
 .products-list h3 {
   font-size: 40px;
   text-align: center;
