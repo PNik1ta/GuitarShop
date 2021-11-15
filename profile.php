@@ -61,7 +61,7 @@
 
 		<!--MAIN-->
 		<?php
-			if($_COOKIE['user'] != '') {
+			if(isset($_COOKIE['user'])) {
 				$username = $_COOKIE['user'];
 				$mysql = new mysqli('localhost','root','','guitarshopdb');
 				$command = "SELECT * FROM users WHERE Username = '$username'";
@@ -75,26 +75,28 @@
 				}
 				$mysql->close();
 			}
-			
+			else {
+				echo "You must register";
+			}
 		?>
 		<div class="main">
 			<div class="profile-info">
 				<div class="profile-info__col-1">
 					<div class="profile-info__data">
 						<h3>Name: </h3>
-						<p><?php echo $name;?></p>
+						<p><?php if(isset($name)) echo $name;?></p>
 					</div>
 					<div class="profile-info__data">
 						<h3>Surname: </h3>
-						<p><?php echo $surname;?></p>
+						<p><?php if (isset($surname))echo $surname;?></p>
 					</div>
 					<div class="profile-info__data">
 						<h3>Username: </h3>
-						<h3><?php echo $username;?></h3>
+						<h3><?php if(isset($username))echo $username;?></h3>
 					</div>
 					<div class="profile-info__data">
 						<h3>Balance: </h3>
-						<h3><?php echo $balance;?></h3>
+						<h3><?php if(isset($balance)) echo $balance;?></h3>
 					</div>
 					<a href="top_up_balance.html"><div class="btn btn_balance">Top up balance</div></a>
 				</div>
@@ -105,7 +107,8 @@
 					<div class="products-content">
 
 						<?php
-							$mysql = new mysqli('localhost','root','','guitarshopdb');
+							if(isset($_COOKIE['user'])) {
+								$mysql = new mysqli('localhost','root','','guitarshopdb');
 							$username = $_COOKIE['user'];
 							$command_user = "SELECT Id FROM users WHERE Username = '$username'";
 							$user_row = $mysql->query($command_user);
@@ -130,6 +133,8 @@
 								<div class='product__about btn buy_btn'>Buy</div>
 							</div>";
 								}
+							}
+							
 						?>
 						</div>
 					</div>
